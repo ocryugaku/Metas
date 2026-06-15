@@ -1,0 +1,71 @@
+body {
+  font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+  background: #141414;
+  color: #eee;
+  margin: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  background: #1f1f1f;
+  padding: 10px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  z-index: 10;
+}
+
+#search {
+  flex: 1;
+  max-width: 400px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: #eee;
+}
+
+#count {
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 16px;
+}
+
+.card {
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #222;
+  transition: transform 0.1s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  outline: 2px solid #5fa8ff;
+}
+
+.card.playing {
+  opacity: 0.5;
+}
+
+.card img.poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #333;
+  display: block;
+}
+
+.label {
+  font-size: 0.8em;
+  padding: 6px;
+  word-break: break-word;
+}

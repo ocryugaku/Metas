@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Poster Matcher</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="progress">Reviewed <span id="accepted-count">{{ accepted }}</span> / <span id="total-count">{{ total }}</span></div>
+  <div class="bulk">
+    <label>Bulk accept &ge;
+      <input type="number" id="threshold" value="{{ threshold }}" min="0" max="100" step="1">%
+    </label>
+    <button id="bulk-accept-btn">Accept all above threshold</button>
+  </div>
+  <div class="hint">Shortcuts: 1-3 pick candidate &middot; F = no match (extract frame)</div>
+</div>
+
+<div id="items">
+{% for item in items %}
+  <div class="item" data-video="{{ item.video_path }}">
+    <div class="video-info">
+      <div class="video-name">{{ item.video_name }}</div>
+      {% if item.candidates %}
+      <div class="best-conf">best match: {{ item.candidates[0].confidence }}%</div>
+      {% else %}
+      <div class="best-conf">no posters found</div>
+      {% endif %}
+    </div>
+    <div class="candidates">
+      {% for c in item.candidates %}
+      <div class="candidate" data-poster="{{ c.poster_path }}" data-confidence="{{ c.confidence }}">
+        <img src="{{ c.thumb_url }}" loading="lazy" alt="">
+        <div class="conf-label">{{ c.confidence }}%</div>
+        <div class="key-hint">{{ loop.index }}</div>
+      </div>
+      {% endfor %}
+      <div class="candidate fallback" data-action="fallback">
+        <div class="fallback-icon">No match<br>(extract frame)</div>
+        <div class="key-hint">F</div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+{% if not items %}
+<div class="done">All videos reviewed. mapping.json is up to date.</div>
+{% endif %}
+
+<script src="/static/app.js"></script>
+</body>
+</html>

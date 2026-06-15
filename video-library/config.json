@@ -1,0 +1,15 @@
+{
+  "movies_dir": "D:\\Movies",
+  "img_subfolder": "img",
+  "smplayer_path": "C:\\Program Files\\SMPlayer\\smplayer.exe",
+  "smplayer_single_instance": true,
+  "ffmpeg_path": "ffmpeg",
+  "ffprobe_path": "ffprobe",
+  "mapping_file": "mapping.json",
+  "thumb_cache_dir": "thumb_cache",
+  "default_confidence_threshold": 85,
+  "gallery_thumb_width": 220,
+  "review_thumb_width": 180,
+  "gallery_port": 8765,
+  "matcher_port": 8766
+}
