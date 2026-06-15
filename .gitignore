@@ -3,3 +3,5 @@
 video-library/mapping.json
 video-library/mapping.json.tmp
 video-library/thumb_cache/
+__pycache__/
+*.pyc
